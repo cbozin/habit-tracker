@@ -16,7 +16,7 @@ Features
 - [Ruby on Rails](https://rubyonrails.org/)
 - [Devise](https://github.com/heartcombo/devise)
 - [PostgreSQL](https://www.postgresql.org/)
-- [TailwindCSS](https://tailwindcss.com/) or [Bootstrap](https://getbootstrap.com/)
+- [Bootstrap](https://getbootstrap.com/)
 - [RSpec](https://rspec.info/) or Minitest
 - [Render](https://render.com/) or [Heroku](https://www.heroku.com/) for deployment
 
@@ -27,7 +27,7 @@ Features
 - Ruby (3.x recommended)
 - Rails (7.x recommended)
 - PostgreSQL
-- Node.js and Yarn (for TailwindCSS support)
+- Node.js
 
 ### Installation
 

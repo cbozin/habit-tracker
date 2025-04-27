@@ -36,7 +36,6 @@ git clone https://github.com/your-username/habit-tracker.git
 cd habit-tracker
 
 bundle install
-yarn install
 
 rails db:create
 rails db:migrate

@@ -1,0 +1,11 @@
+<% content_for :title, "New habit" %>
+
+<h1>New habit</h1>
+
+<%= render "form", habit: @habit %>
+
+<br>
+
+<div>
+  <%= link_to "Back to habits", habits_path %>
+</div>

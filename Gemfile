@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "kamal", require: false
 gem "thruster", require: false
 gem "devise"
+gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -31,4 +32,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-

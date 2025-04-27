@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  habit: one
+  checked_in: false
+  date: 2025-04-27
+
+two:
+  user: two
+  habit: two
+  checked_in: false
+  date: 2025-04-27

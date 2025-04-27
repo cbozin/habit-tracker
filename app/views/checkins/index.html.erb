@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Checkins" %>
+
+<h1>Checkins</h1>
+
+<div id="checkins">
+  <% @checkins.each do |checkin| %>
+    <%= render checkin %>
+    <p>
+      <%= link_to "Show this checkin", checkin %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New checkin", new_checkin_path %>

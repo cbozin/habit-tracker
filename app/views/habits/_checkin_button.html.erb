@@ -1,0 +1,14 @@
+<%= form_with(model: Checkin.new, url: habit_checkins_path(@habit), method: :post, local: true) do |form| %>
+  <% if habit.errors.any? %>
+    <div style="color: red">
+  <% end %>
+  <%= form.hidden_field :habit_id, value: @habit.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :date, value: Date.today %>
+  
+  <% if habit.checkins.where(user: current_user, date: Date.today).exists? %>
+    <%= form.submit "Uncheck-in", class: "button" %>
+  <% else %>
+    <%= form.submit "Check-in", class: "button" %>
+  <% end %>
+<% end %>

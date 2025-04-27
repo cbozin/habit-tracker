@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :habits, dependent: :destroy
   # if user deleted, destroy their habits
+  has_many :checkins
 end

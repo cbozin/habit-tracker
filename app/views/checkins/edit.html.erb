@@ -1,0 +1,12 @@
+<% content_for :title, "Editing checkin" %>
+
+<h1>Editing checkin</h1>
+
+<%= render "form", checkin: @checkin %>
+
+<br>
+
+<div>
+  <%= link_to "Show this checkin", @checkin %> |
+  <%= link_to "Back to checkins", checkins_path %>
+</div>

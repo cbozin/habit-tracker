@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :habits
+  resources :habits do
+    resources :checkins
+  end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root to: "home#index"
+  root to: "habits#index"
 
   get "home/about"
 end

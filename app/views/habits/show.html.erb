@@ -3,6 +3,7 @@
 <%= render @habit %>
 
 <div>
+  <%= render "checkin_button", habit: @habit %>
   <%= link_to "Edit this habit", edit_habit_path(@habit) %> |
   <%= link_to "Back to habits", habits_path %>
 

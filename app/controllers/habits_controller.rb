@@ -21,7 +21,7 @@ class HabitsController < ApplicationController
 
   # POST /habits or /habits.json
   def create
-    @habit = Habit.new(habit_params)
+    @habit = current_user.habits.build(habit_params)
 
     respond_to do |format|
       if @habit.save
@@ -65,6 +65,6 @@ class HabitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def habit_params
-      params.expect(habit: [ :title, :description, :user_id ])
+      params.expect(habit: [ :title, :description ])
     end
 end

@@ -1,15 +1,6 @@
 class CheckinsController < ApplicationController
   before_action :set_habit, :authenticate_user!
 
-  # GET /checkins or /checkins.json
-  def index
-    @checkins = Checkin.all
-  end
-
-  # GET /checkins/1 or /checkins/1.json
-  def show
-  end
-
   # POST /checkins or /checkins.json
   def create
     @checkin = Checkin.find_or_initialize_by(habit: @habit, user: current_user, date: Date.today)

@@ -4,7 +4,7 @@ class HabitsTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
     sign_in @user
-    @habit = habits(@user)
+    @habit = habits(:one)
   end
 
   test "visiting the index" do

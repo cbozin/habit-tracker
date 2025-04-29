@@ -6,9 +6,14 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :date, value: Date.today %>
   
-  <% if habit.checkins.where(user: current_user, date: Date.today).exists? %>
-    <%= form.submit "Uncheck-in", class: "button" %>
-  <% else %>
-    <%= form.submit "Check-in", class: "button" %>
-  <% end %>
+  <div class="form-check form-switch">
+    <%= check_box_tag "checked_in", "1", @habit.checkins.exists?(user: current_user, date: Date.today), class:"form-check-input", id:"checkin-toggle" %>
+    <%= label_tag "checkin_toggle", "Today's checkin", class: "form-check-label" %>
+  </div>
 <% end %>
+
+<script>
+  document.getElementById("checkin-toggle").addEventListener("change", function() {
+    document.getElementById("checkin-form").submit();
+  })
+</script>

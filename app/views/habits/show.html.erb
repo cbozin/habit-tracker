@@ -1,9 +1,17 @@
 <p style="color: green"><%= notice %></p>
-<p>Current Streak:<%= @habit.current_streak(current_user)%> </p>
+<%= render "checkin_button", habit: @habit, user: current_user %>
+<p>
+  <span class="badge bg-primary">
+    Current Streak:<%= @habit.current_streak(current_user)%> 
+  </span>
+</p>
 <%= month_calendar(events: @habit.checkins) do |date, checkins| %>
+   <%= date.day %>
   <% if checkins.any? %>
     <div class="checkin-day">
       ✅
     </div>
   <% end %>
 <% end %>
+
+

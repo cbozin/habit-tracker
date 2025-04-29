@@ -8,3 +8,37 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .simple-calendar {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    
+    .day { 
+        border: 1px solid #dee2e6;
+        height: 100px;
+        vertical-align: top;
+        padding: 5px
+    }
+  
+    .wday-0 { background-color: #f8f9fa; }
+    .wday-1 {}
+    .wday-2 {}
+    .wday-3 {}
+    .wday-4 {}
+    .wday-5 {}
+    .wday-6 { background-color: #f8f9fa; }
+  
+    .today {}
+    .past {}
+    .future {}
+  
+    .start-date {}
+  
+    .prev-month {}
+    .next-month { }
+    .current-month {}
+  
+    .has-events {}
+  }

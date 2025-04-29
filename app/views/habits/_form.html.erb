@@ -1,27 +1,28 @@
 <%= form_with(model: habit) do |form| %>
   <% if habit.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(habit.errors.count, "error") %> prohibited this habit from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">
+        <%= pluralize(habit.errors.count, "error") %> prohibited this habit from being saved:</h2>
+      </h4>
       <ul>
-        <% habit.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% habit.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", required: true %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.textarea :description, class: "form-control", required: true %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Create Habit", class: "btn btn-primary" %>
   </div>
 <% end %>

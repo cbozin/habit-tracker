@@ -1,11 +1,12 @@
 <% content_for :title, "New habit" %>
 
-<h1>New habit</h1>
+<div class="container mt-4 col-md-6">
+  <h1 class="mb-4">New habit</h1>
 
-<%= render "form", habit: @habit %>
+  <%= render "form", habit: @habit %>
 
-<br>
+  <div class="mt-3">
+    <%= link_to "Back to habits", habits_path, class: "btn btn-outline-secondary" %>
+  </div>
 
-<div>
-  <%= link_to "Back to habits", habits_path %>
 </div>

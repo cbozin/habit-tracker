@@ -5,17 +5,15 @@ class CheckinsTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
     sign_in @user
+
+    @habit = habits(:one)
     @checkin = checkins(:one)
   end
 
   test "should create checkin" do
-    check "Checked in" if @checkin.checked_in
-    fill_in "Date", with: @checkin.date
-    fill_in "Habit", with: @checkin.habit_id
-    fill_in "User", with: @checkin.user_id
-    click_on "Create Checkin"
+    visit habit_path(@habit)
+    click_on "Check-in"
 
-    assert_text "Checkin was successfully created"
-    click_on "Back"
+    assert_text "Habit checked in!"
   end
 end

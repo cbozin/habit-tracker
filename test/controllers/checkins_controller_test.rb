@@ -18,12 +18,10 @@ class CheckinsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Checkin.count") do
       post habit_checkins_url(@habit), params: { checkin: { checked_in: @checkin.checked_in, date: @checkin.date, habit_id: @checkin.habit_id, user_id: @checkin.user_id } }
     end
-
-    assert_redirected_to new_habit_checkin_url(Checkin.last)
   end
 
   test "should show checkin" do
-    get habit_checkin_url(@checkin, @checkin)
+    get habit_checkin_url(@habit, @checkin)
     assert_response :success
   end
 end

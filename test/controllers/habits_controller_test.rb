@@ -2,6 +2,8 @@ require "test_helper"
 
 class HabitsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
+    sign_in @user
     @habit = habits(:one)
   end
 

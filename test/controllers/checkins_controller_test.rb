@@ -5,8 +5,7 @@ class CheckinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     sign_in @user
-    @habit = habits(:one)
-    @checkin = checkins(:one)
+    @checkin = checkins(@user)
   end
 
   test "should create checkin" do

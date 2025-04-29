@@ -6,7 +6,7 @@ class HabitsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     sign_in @user
-    @habit = habits(:one)
+    @habit = habits(@user)
   end
 
   test "should get index" do

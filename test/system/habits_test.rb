@@ -2,7 +2,9 @@ require "application_system_test_case"
 
 class HabitsTest < ApplicationSystemTestCase
   setup do
-    @habit = habits(:one)
+    @user = users(:one)
+    sign_in @user
+    @habit = habits(@user)
   end
 
   test "visiting the index" do

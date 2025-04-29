@@ -1,5 +1,5 @@
 class CheckinsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_habit, :authenticate_user!
 
   # GET /checkins or /checkins.json
   def index
@@ -10,18 +10,8 @@ class CheckinsController < ApplicationController
   def show
   end
 
-  # GET /checkins/new
-  def new
-    @checkin = Checkin.new
-  end
-
-  # GET /checkins/1/edit
-  def edit
-  end
-
   # POST /checkins or /checkins.json
   def create
-    @habit = Habit.find(params[:habit_id])
     @checkin = Checkin.find_or_initialize_by(habit: @habit, user: current_user, date: Date.today)
 
     if @checkin.new_record?
@@ -39,6 +29,10 @@ class CheckinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_checkin
       @checkin = Checkin.find(params.expect(:id))
+    end
+
+    def set_habit
+      @habit = Habit.find(params[:habit_id])
     end
 
     # Only allow a list of trusted parameters through.

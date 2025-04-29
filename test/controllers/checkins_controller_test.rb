@@ -13,11 +13,6 @@ class CheckinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_habit_checkin_url(@habit, @checkin)
-    assert_response :success
-  end
-
   test "should create checkin" do
     assert_difference("Checkin.count") do
       post habit_checkins_url(@habit), params: { checkin: { checked_in: @checkin.checked_in, date: @checkin.date, habit_id: @checkin.habit_id, user_id: @checkin.user_id } }

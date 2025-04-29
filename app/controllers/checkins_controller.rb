@@ -1,5 +1,5 @@
 class CheckinsController < ApplicationController
-  before_action :set_checkin, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /checkins or /checkins.json
   def index
@@ -21,40 +21,18 @@ class CheckinsController < ApplicationController
 
   # POST /checkins or /checkins.json
   def create
-    @checkin = Checkin.new(checkin_params)
+    @habit = Habit.find(params[:habit_id])
+    @checkin = Checkin.find_or_initialize_by(habit: @habit, user: current_user, date: Date.today)
 
-    respond_to do |format|
-      if @checkin.save
-        format.html { redirect_to @checkin, notice: "Checkin was successfully created." }
-        format.json { render :show, status: :created, location: @checkin }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @checkin.errors, status: :unprocessable_entity }
-      end
+    if @checkin.new_record?
+      @checkin.checked_in = true
+      @checkin.save
+      flash[:notice] = "Habit checked in!"
+    else
+      @checkin.checked_in = !@checkin.checked_in
+      flash[:notice] = @checkin.checked_in ? "Habit checked in!" : "Checkin removed"
     end
-  end
-
-  # PATCH/PUT /checkins/1 or /checkins/1.json
-  def update
-    respond_to do |format|
-      if @checkin.update(checkin_params)
-        format.html { redirect_to @checkin, notice: "Checkin was successfully updated." }
-        format.json { render :show, status: :ok, location: @checkin }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @checkin.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /checkins/1 or /checkins/1.json
-  def destroy
-    @checkin.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to checkins_path, status: :see_other, notice: "Checkin was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to root_path
   end
 
   private

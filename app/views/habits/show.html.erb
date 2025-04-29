@@ -1,4 +1,5 @@
 <p style="color: green"><%= notice %></p>
+<p>Current Streak:<%= @habit.current_streak(current_user)%> </p>
 <%= month_calendar(events: @habit.checkins) do |date, checkins| %>
   <% if checkins.any? %>
     <div class="checkin-day">

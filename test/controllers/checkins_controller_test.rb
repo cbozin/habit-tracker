@@ -2,16 +2,18 @@ require "test_helper"
 
 class CheckinsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
+    sign_in @user
     @checkin = checkins(:one)
   end
 
   test "should get index" do
-    get habit_checkins_url
+    get habit_checkins_url(:habit_id)
     assert_response :success
   end
 
   test "should get new" do
-    get new_habit_checkin_url
+    get new_habit_checkin_url(:habit_id)
     assert_response :success
   end
 
@@ -20,7 +22,7 @@ class CheckinsControllerTest < ActionDispatch::IntegrationTest
       post habit_checkins_url, params: { checkin: { checked_in: @checkin.checked_in, date: @checkin.date, habit_id: @checkin.habit_id, user_id: @checkin.user_id } }
     end
 
-    assert_redirected_to habit_checkin_url(Checkin.last)
+    assert_redirected_to new_habit_checkin_url(Checkin.last)
   end
 
   test "should show checkin" do

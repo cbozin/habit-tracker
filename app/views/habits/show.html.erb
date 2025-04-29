@@ -1,7 +1,8 @@
 <p style="color: green"><%= notice %></p>
-<%= monthly_calendar(events: @habit.checkins) do |date, checkins| %>
-<% if checkins.any? %>
-  <div class="checkin-day">
-    ✅
-  </div>
+<%= month_calendar(events: @habit.checkins) do |date, checkins| %>
+  <% if checkins.any? %>
+    <div class="checkin-day">
+      ✅
+    </div>
+  <% end %>
 <% end %>

@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class HabitsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
   setup do
     @user = users(:one)
     sign_in @user

@@ -19,7 +19,6 @@ class HabitsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @habit.description
     fill_in "Title", with: @habit.title
-    fill_in "User", with: @user.id
     click_on "Create Habit"
 
     assert_text "Habit was successfully created"
@@ -32,7 +31,6 @@ class HabitsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @habit.description
     fill_in "Title", with: @habit.title
-    fill_in "User", with: @user.id
     click_on "Update Habit"
 
     assert_text "Habit was successfully updated"

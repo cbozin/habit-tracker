@@ -17,6 +17,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 gem "devise"
 gem "dotenv-rails", groups: [ :development, :test ]
+gem "simple_calendar"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

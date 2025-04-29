@@ -1,11 +1,7 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @habit %>
-
-<div>
-  <%= render "checkin_button", habit: @habit %>
-  <%= link_to "Edit this habit", edit_habit_path(@habit) %> |
-  <%= link_to "Back to habits", habits_path %>
-
-  <%= button_to "Destroy this habit", @habit, method: :delete %>
-</div>
+<%= monthly_calendar(events: @habit.checkins) do |date, checkins| %>
+<% if checkins.any? %>
+  <div class="checkin-day">
+    ✅
+  </div>
+<% end %>

@@ -3,17 +3,14 @@ class CheckinsController < ApplicationController
 
   # POST /checkins or /checkins.json
   def create
-    @checkin = Checkin.find_or_initialize_by(habit: @habit, user: current_user, date: Date.today)
+    @habits.checkins.create(user: current_user, date: Date.today)
+    redirect_back fallback_location: habits_path
+  end
 
-    if @checkin.new_record?
-      @checkin.checked_in = true
-      @checkin.save
-      flash[:notice] = "Habit checked in!"
-    else
-      @checkin.checked_in = !@checkin.checked_in
-      flash[:notice] = @checkin.checked_in ? "Habit checked in!" : "Checkin removed"
-    end
-    redirect_to root_path
+  def destroy
+    checkin = @habit.checkins.find(params[:id])
+    checkin.destroy if checkin.user == current_user
+    redirect_back fallback_location: habits_path
   end
 
   private

@@ -1,5 +1,5 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, :set_habit, only: %i[ show edit update destroy ]
 
   # GET /habits or /habits.json
   def index

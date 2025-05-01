@@ -1,17 +1,5 @@
-<div id="<%= dom_id habit %>">
-  <p>
-    <strong>Title:</strong>
-    <%= habit.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= habit.description %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= habit.user_id %>
-  </p>
-
+<div>
+  <h5 class="card-title mb-1"><%= habit.title %></h5>
+  <p class="card-text mb-2"><%= habit.description %></p>
+  <%= link_to "Show this habit", habit %>
 </div>

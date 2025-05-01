@@ -2,9 +2,11 @@
 
 
 <% if checked_in %>
-  <% button_to %>
+  <% button_to habit_checkin_path(habit, checked_in), method: :delete, form: {data: {turbo: false}}, class: "btn p-0 border-0 bg-transparent" do %>
+    <i class="bi bi-check-circle-fill text-success fs-1" style="cursor: pointer;"></i>
+  <% end %>
 <% else %>
-  <%= form_with(model: Checkin.new, url: habit_checkins_path(habit), method: :post, local: true, html: { id: "checkin-form-#{habit.id}"}) do |form| %>
+  <%= form_with(model: Checkin.new, url: habit_checkins_path(habit), method: :post, local: true ) do |form| %>
     <% if habit.errors.any? %>
       <div style="color: red">
     <% end %>
@@ -13,9 +15,7 @@
     <%= form.hidden_field :date, value: Date.today %>
     
     <button type="submit" class="btn p-0 border-0 bg-transparent" id="checkin-button-<%= habit.id %>" >
-      <% checked_in = habit.checkins.exists?(user: current_user, date: Date.today) %>
-      <% icon_class = checked_in ? "bi-check-circle-fill text-success" : "bi-circle text-muted" %>
-      <i class="bi <%= icon_class %> fs-1 ps-3 pe-5" role="button" style="cursor: pointer;" ></i>
+      <i class="bi bi-circle text-muted fs-1" style="cursor: pointer;" ></i>
     </button>
   <% end %>
 <% end %>

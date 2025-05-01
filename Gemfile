@@ -20,6 +20,8 @@ gem "dotenv-rails", groups: [ :development, :test ]
 gem "simple_calendar"
 gem "chartkick"
 gem "groupdate"
+gem "guard-livereload"
+gem "rack-livereload"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

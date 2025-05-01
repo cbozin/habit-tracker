@@ -1,0 +1,30 @@
+<div class="modal fade" id="habitModal-<%= habit.id %>" tabindex="-1" aria-labelledby="habitModalLabel-<%= habit.id %>" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="habitModalLabel-<%= habit.id %>"><%= habit.title %> Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Description:</h6>
+        <p><%= habit.description %></p>
+
+        <h6>Check-in Streak:</h6>
+        <p><%= habit.checkins.where(user: current_user).count %> days</p>
+
+        <h6>Actions:</h6>
+        <%= button_to habit_path(habit), method: :delete, class: "btn btn-danger" do%>
+          Delete Habit
+        <% end %>
+
+        <br><br>
+        <%= link_to "View Progress via Calendar", progress_habit_path(habit), class: "btn btn-primary"%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

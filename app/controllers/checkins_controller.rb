@@ -3,7 +3,7 @@ class CheckinsController < ApplicationController
 
   # POST /checkins or /checkins.json
   def create
-    @habits.checkins.create(user: current_user, date: Date.today)
+    @habit.checkins.create(user: current_user, date: Date.today)
     redirect_back fallback_location: habits_path
   end
 

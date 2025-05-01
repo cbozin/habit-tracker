@@ -1,31 +1,25 @@
 <% content_for :title, "Habits" %>
 
 <h1 class="text-center my-4">Habits</h1>
-
+<div class="d-flex justify-content-center gap-3 mb-4" >
+  <%= link_to "Add Habit", new_habit_path, class: "btn btn-outline-dark"%>
+  <%= link_to "Delete Habits", new_habit_path, class: "btn btn-outline-dark" %>
+</div>
 <div class="d-flex justify-content-center">
-  <div class="scroll-container rounded p-3 mb-2 bg-secondary" style="height: 800px; overflow-y: auto; width: 100%; max-width: 800px">
+  <div class="scroll-container rounded p-3 mb-2" style="height: 800px; overflow-y: auto; width: 100%; max-width: 700px">
     <% if current_user %>
-      <div id="habits" class="mb-4 mt-4 me-3 ms-3">
+      <div id="habits" class="mb-4 mt-1 me-3 ms-3">
         <% @habits.each do |habit| %>
           <div class="card mb-3">
             <div class="card-body d-flex justify-content-between align-items-center">
-              <div>
-                <h5 class="card-title mb-1"><%= habit.title %></h5>
-                <p class="card-text mb-2"><%= habit.description %></p>
-                <%= link_to "Show this habit", habit %>
-              </div>
+              <%= render "habit", habit: habit %>
+              <%= render "habit_modal", habit: habit %>
               <%=  render "checkin_form", habit: habit, checked_in: habit.checkins.exists?(user: current_user, date: Date.today) %>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
-    <div class="w-100" style="max-width: 600px;">
-      <div class="d-flex justify-content-end">
-        <%= link_to new_habit_path, class: "position-absolute bottom-0 end-0 m-3 text-primary" do %>
-          <i class="bi bi-plus-circle" style="font-size: 8rem;"></i>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

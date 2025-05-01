@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :habits do
+    member do
+      get :progress
+    end
     resources :checkins, only: [ :create, :destroy ]
   end
   devise_for :users

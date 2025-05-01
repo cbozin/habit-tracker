@@ -1,5 +1,7 @@
 <div>
   <h5 class="card-title mb-1"><%= habit.title %></h5>
   <p class="card-text mb-2"><%= habit.description %></p>
-  <%= link_to "Show this habit", habit %>
+  <%= link_to "View Habit", "#habitModal-#{habit.id}", 
+            class: "btn btn-secondary", 
+            data: { bs_toggle: "modal", bs_target: "#habitModal-#{habit.id}" } %>
 </div>

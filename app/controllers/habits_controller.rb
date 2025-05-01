@@ -34,6 +34,9 @@ class HabitsController < ApplicationController
     end
   end
 
+  def progress
+    @habit = Habit.find(params[:id])
+  end
   # PATCH/PUT /habits/1 or /habits/1.json
   def update
     respond_to do |format|

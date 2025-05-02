@@ -3,11 +3,12 @@ class HabitsController < ApplicationController
 
   # GET /habits or /habits.json
   def index
-    @habits = Habit.all
+    @habits = current_user.habits
   end
 
   # GET /habits/1 or /habits/1.json
   def show
+    @habit = current_user.habits.find(params[:id])
   end
 
   # GET /habits/new

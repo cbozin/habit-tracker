@@ -24,7 +24,7 @@ class HabitsControllerTest < ActionDispatch::IntegrationTest
       post habits_url, params: { habit: { description: @habit.description, title: @habit.title, user_id: @habit.user_id } }
     end
 
-    assert_redirected_to habit_url(Habit.last)
+    assert_redirected_to habits_url
   end
 
   test "should show habit" do

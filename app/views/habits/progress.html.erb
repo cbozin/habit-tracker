@@ -1,15 +1,23 @@
+<%= link_to "Back to Habits", habits_path, class: "btn btn-secondary mb-3" %>
+
 <p>
-  <span class="badge bg-primary">
+  <span class="badge bg-primary fs-4 py-2 px-3">
     Current Streak:<%= @habit.current_streak(current_user)%> 
   </span>
 </p>
+
 <%= month_calendar(events: @habit.checkins) do |date, checkins| %>
+ <div class="calendar-header text-center mb-3">
+    
+  </div>
+
    <%= date.day %>
   <% if checkins.any? %>
     <div class="checkin-day">
       ✅
     </div>
   <% end %>
+  </div>
 <% end %>
 
 

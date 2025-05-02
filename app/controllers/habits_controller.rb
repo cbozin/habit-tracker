@@ -25,7 +25,7 @@ class HabitsController < ApplicationController
 
     respond_to do |format|
       if @habit.save
-        format.html { redirect_to @habit, notice: "Habit was successfully created." }
+        format.html { redirect_to habits_path, notice: "Habit was successfully created." }
         format.json { render :show, status: :created, location: @habit }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class HabitsController < ApplicationController
     @habit.destroy!
 
     respond_to do |format|
-      format.html { redirect_to habits_path, status: :see_other, notice: "Habit was successfully destroyed." }
+      format.html { redirect_to habits_path, status: :see_other, notice: "Habit was successfully deleted." }
       format.json { head :no_content }
     end
   end

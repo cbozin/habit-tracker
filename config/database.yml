@@ -79,7 +79,10 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-    url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  url: <%= ENV['DATABASE_URL'] %>
   # primary: &primary_production
   #   <<: *default
   #   database: habits_production

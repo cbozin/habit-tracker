@@ -1,15 +1,18 @@
 # Habit Tracker App (Ruby on Rails)
 
+[View the Live App on Heroku](https://frozen-plains-83661-38536826bbb5.herokuapp.com/)
+
 A simple, full-stack Ruby on Rails application to track your daily habits and build consistency!
+
 
 Features
 
 - User authentication (sign up, login, logout) with Devise
 - Create, edit, and delete habits
 - Daily check-ins for each habit
-- Habit progress visualization (calendar or list format)
-- Mobile-friendly design with TailwindCSS or Bootstrap
-- Optional: Streak tracking and habit success rate
+- Habit progress visualization via calendar
+- User-friendly design with Bootstrap
+- Habit streak tracking 
 
 ## Tools Used
 
@@ -17,8 +20,7 @@ Features
 - [Devise](https://github.com/heartcombo/devise)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Bootstrap](https://getbootstrap.com/)
-- [RSpec](https://rspec.info/) or Minitest
-- [Render](https://render.com/) or [Heroku](https://www.heroku.com/) for deployment
+- [Heroku](https://www.heroku.com/) for deployment
 
 ## How to Get Started
 

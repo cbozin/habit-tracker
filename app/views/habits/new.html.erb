@@ -6,7 +6,7 @@
   <%= render "form", habit: @habit %>
 
   <div class="mt-3">
-    <%= link_to "Back to habits", habits_path, class: "btn btn-outline-secondary" %>
+    <%= link_to "Back", request.referer, class: "btn btn-outline-secondary" %>
   </div>
 
 </div>

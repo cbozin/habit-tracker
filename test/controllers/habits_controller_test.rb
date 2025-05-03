@@ -39,7 +39,7 @@ class HabitsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update habit" do
     patch habit_url(@habit), params: { habit: { description: @habit.description, title: @habit.title, user_id: @habit.user_id } }
-    assert_redirected_to habit_url(@habit)
+    assert_redirected_to habits_url
   end
 
   test "should destroy habit" do

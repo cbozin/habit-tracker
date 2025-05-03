@@ -15,7 +15,7 @@ class HabitsTest < ApplicationSystemTestCase
 
   test "should create habit" do
     visit habits_url
-    click_on "Add Habit"
+    click_on "Add New Habit"
 
     fill_in "Description", with: @habit.description
     fill_in "Title", with: @habit.title
@@ -31,7 +31,7 @@ class HabitsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @habit.description
     fill_in "Title", with: @habit.title
-    click_on "Update Habit"
+    click_on "Create Habit"
 
     assert_text "Habit was successfully updated"
     click_on "Back"

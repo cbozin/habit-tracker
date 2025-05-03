@@ -22,7 +22,6 @@ class HabitsTest < ApplicationSystemTestCase
     click_on "Create Habit"
 
     assert_text "Habit was successfully created"
-    click_on "Back"
   end
 
   test "should update Habit" do
@@ -34,15 +33,13 @@ class HabitsTest < ApplicationSystemTestCase
     click_on "Create Habit"
 
     assert_text "Habit was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Habit" do
     visit habit_path(@habit)
 
-    accept_confirm do
-      click_on "Destroy this habit"
-    end
+    click_on "Destroy this habit", match: :first
+
 
     assert_text "Habit was successfully destroyed"
   end

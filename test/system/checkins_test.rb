@@ -11,8 +11,8 @@ class CheckinsTest < ApplicationSystemTestCase
   end
 
   test "should create checkin" do
-    visit habit_path(@habit)
-    click_on "Check-in"
+    visit habits_path
+    find("button[id^='checkin-button']").click
 
     assert_text "Habit checked in!"
   end

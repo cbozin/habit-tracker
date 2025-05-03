@@ -15,7 +15,7 @@ class HabitsTest < ApplicationSystemTestCase
 
   test "should create habit" do
     visit habits_url
-    click_on "New habit"
+    click_on "Add habit"
 
     fill_in "Description", with: @habit.description
     fill_in "Title", with: @habit.title
@@ -26,9 +26,12 @@ class HabitsTest < ApplicationSystemTestCase
   end
 
   test "should update Habit" do
-    visit habit_url(@habit)
-    click_on "Edit this habit", match: :first
+    visit habits_url
 
+    click_on "View habit", match: :first
+    assert_selector ".modal", visible: true
+
+    click_on "Edit Habit", match: :first
     fill_in "Description", with: @habit.description
     fill_in "Title", with: @habit.title
     click_on "Update Habit"
@@ -38,8 +41,14 @@ class HabitsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Habit" do
-    visit habit_url(@habit)
-    click_on "Destroy this habit", match: :first
+    visit habits_url
+
+    click_on "View Habit", match: :first
+    assert_selector ".modal", visible: true
+
+    accept_confirm do
+      click_on "Delete Habit"
+    end
 
     assert_text "Habit was successfully destroyed"
   end

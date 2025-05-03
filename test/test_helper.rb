@@ -1,12 +1,6 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require "capybara/rails"
-require "capybara/minitest"
-require "selenium/webdriver"
-
-Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :selenium_chrome_headless
 
 module ActiveSupport
   class TestCase

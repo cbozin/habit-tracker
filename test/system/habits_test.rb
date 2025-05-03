@@ -25,31 +25,23 @@ class HabitsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "should update Habit", js: true do
-    driven_by :selenium_chrome_headless
-    visit habits_url
+  test "should update Habit" do
+    visit habit_url(@habit)
+    click_on "Edit this habit", match: :first
 
-    find("a", "View Habit", match: :first).click
-    within(".modal") do
-      click_on "Edit Habit", match: :first
-      fill_in "Description", with: @habit.description
-      fill_in "Title", with: @habit.title
-      click_on "Update Habit"
-    end
+    fill_in "Description", with: @habit.description
+    fill_in "Title", with: @habit.title
+    click_on "Update Habit"
 
     assert_text "Habit was successfully updated"
     click_on "Back"
   end
 
-  test "should destroy Habit", js: true do
-    driven_by :selenium_chrome_headless
-    visit habits_url
+  test "should destroy Habit" do
+    visit habit_path(@habit)
 
-    find("a", text: "View Habit", match: :first).click
-    within(".modal") do
-      accept_confirm do
-        click_on "Delete Habit"
-      end
+    accept_confirm do
+      click_on "Destroy this habit"
     end
 
     assert_text "Habit was successfully destroyed"

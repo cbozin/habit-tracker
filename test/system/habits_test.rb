@@ -41,6 +41,6 @@ class HabitsTest < ApplicationSystemTestCase
     click_on "Destroy this habit", match: :first
 
 
-    assert_text "Habit was successfully destroyed"
+    assert_text "Habit was successfully deleted"
   end
 end

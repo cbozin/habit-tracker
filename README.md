@@ -19,7 +19,7 @@ Features
 - [Ruby on Rails](https://rubyonrails.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Devise](https://github.com/heartcombo/devise) for authentication
-- [Bootstrap](https://getbootstrap.com/) for styling
+- [Bootstrap](https://getbootstrap.com/) for UI design
 - [Heroku](https://www.heroku.com/) for deployment
 
 ## How to Get Started

@@ -17,9 +17,9 @@ Features
 ## Tools Used
 
 - [Ruby on Rails](https://rubyonrails.org/)
-- [Devise](https://github.com/heartcombo/devise)
 - [PostgreSQL](https://www.postgresql.org/)
-- [Bootstrap](https://getbootstrap.com/)
+- [Devise](https://github.com/heartcombo/devise) for authentication
+- [Bootstrap](https://getbootstrap.com/) for styling
 - [Heroku](https://www.heroku.com/) for deployment
 
 ## How to Get Started

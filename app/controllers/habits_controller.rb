@@ -1,14 +1,21 @@
 class HabitsController < ApplicationController
-  before_action :authenticate_user!, :set_habit, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, :set_habit, only: %i[ show edit update destroy progress]
+
+  before_action :require_real_user!, only: %i[ update destroy ]
 
   # GET /habits or /habits.json
   def index
-    @habits = current_user.habits
+    # for guests, use session storage (temp)
+    @habits = current_or_guest_user.habits
   end
 
   # GET /habits/1 or /habits/1.json
   def show
-    @habit = current_user.habits.find(params[:id])
+    if not user_signed_in?
+        redirect_to root_path, alert: "Please sign in to view habit details."
+    else
+        @habit = current_user.habits.find(params[:id])
+    end
   end
 
   # GET /habits/new
@@ -22,21 +29,34 @@ class HabitsController < ApplicationController
 
   # POST /habits or /habits.json
   def create
-    @habit = current_user.habits.build(habit_params)
-
-    respond_to do |format|
-      if @habit.save
-        format.html { redirect_to habits_path, notice: "Habit was successfully created." }
-        format.json { render :show, status: :created, location: @habit }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @habit.errors, status: :unprocessable_entity }
+    if user_signed_in?
+      @habit = current_user.habits.build(habit_params)
+      respond_to do |format|
+        if @habit.save
+          format.html { redirect_to habits_path, notice: "Habit was successfully created." }
+          format.json { render :show, status: :created, location: @habit }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @habit.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      # guest user
+      session[:guest_habits] ||= []
+      session[:guest_habits] << {
+        title: params[:habit][:title],
+        description: params[:habit][:description]
+      }
+      redirect_to habits_path, notice: "Habit created! Please sign up to save permanently."
     end
   end
 
   def progress
-    @habit = Habit.find(params[:id])
+    if not user_signed_in?
+      redirect_to root_path, alert: "Please sign up to view progress."
+    else
+      @habit = Habit.find(params[:id])
+    end
   end
   # PATCH/PUT /habits/1 or /habits/1.json
   def update

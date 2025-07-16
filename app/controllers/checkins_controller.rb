@@ -1,5 +1,5 @@
 class CheckinsController < ApplicationController
-  before_action :set_habit, :authenticate_user!
+  before_action :set_habit, :authenticate_user!, :require_real_user!
 
   # POST /checkins or /checkins.json
   def create
